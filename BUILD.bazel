@@ -1,4 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
 # gazelle:prefix cuelang.org/go
+# gazelle:exclude cmd/cue/cmd/testdata
+# gazelle:exclude encoding/protobuf/testdata
 gazelle(name = "gazelle")

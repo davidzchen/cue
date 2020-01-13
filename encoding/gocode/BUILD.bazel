@@ -23,6 +23,9 @@ go_test(
         "gen_test.go",
         "generator_test.go",
     ],
+    # N.B. testdata/ needs to be added to data for generator_test (which reads
+    # the directory) and to deps for gen_test (which links pkg1 and pkg2).
+    data = glob(["testdata/**"]),
     embed = [":go_default_library"],
     deps = [
         "//cue:go_default_library",
