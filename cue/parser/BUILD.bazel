@@ -1,0 +1,44 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "interface.go",
+        "parser.go",
+        "print.go",
+    ],
+    importpath = "cuelang.org/go/cue/parser",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue/ast:go_default_library",
+        "//cue/ast/astutil:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/literal:go_default_library",
+        "//cue/scanner:go_default_library",
+        "//cue/token:go_default_library",
+        "//internal:go_default_library",
+        "//internal/source:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "error_test.go",
+        "example_test.go",
+        "interface_test.go",
+        "parser_test.go",
+        "performance_test.go",
+        "short_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    embed = [":go_default_library"],
+    deps = [
+        "//cue/ast:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/scanner:go_default_library",
+        "//cue/token:go_default_library",
+        "//internal/source:go_default_library",
+    ],
+)

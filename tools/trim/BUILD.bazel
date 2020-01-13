@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["trim.go"],
+    importpath = "cuelang.org/go/tools/trim",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/token:go_default_library",
+        "//internal:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["trim_test.go"],
+    embed = [":go_default_library"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/format:go_default_library",
+        "//cue/parser:go_default_library",
+    ],
+)

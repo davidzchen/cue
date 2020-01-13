@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["internal.go"],
+    importpath = "cuelang.org/go/internal",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//cue/ast:go_default_library",
+        "//cue/token:go_default_library",
+        "@com_github_cockroachdb_apd_v2//:go_default_library",
+    ],
+)

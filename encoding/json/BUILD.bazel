@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["json.go"],
+    importpath = "cuelang.org/go/encoding/json",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/ast/astutil:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/literal:go_default_library",
+        "//cue/parser:go_default_library",
+        "//cue/token:go_default_library",
+        "//pkg/encoding/json:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["json_test.go"],
+    embed = [":go_default_library"],
+    deps = [
+        "//cue/ast:go_default_library",
+        "//cue/format:go_default_library",
+        "@com_github_stretchr_testify//assert:go_default_library",
+    ],
+)

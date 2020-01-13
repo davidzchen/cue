@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "build.go",
+        "crd.go",
+        "doc.go",
+        "errors.go",
+        "openapi.go",
+        "orderedmap.go",
+        "types.go",
+    ],
+    importpath = "cuelang.org/go/encoding/openapi",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/format:go_default_library",
+        "//cue/token:go_default_library",
+        "@com_github_cockroachdb_apd_v2//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["openapi_test.go"],
+    data = glob(["testdata/**"]),
+    embed = [":go_default_library"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/load:go_default_library",
+        "@com_github_kylelemons_godebug//diff:go_default_library",
+    ],
+)

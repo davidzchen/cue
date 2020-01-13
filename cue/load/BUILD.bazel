@@ -1,0 +1,55 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "config.go",
+        "doc.go",
+        "errors.go",
+        "fs.go",
+        "import.go",
+        "loader.go",
+        "match.go",
+        "package.go",
+        "read.go",
+        "search.go",
+        "source.go",
+    ],
+    importpath = "cuelang.org/go/cue/load",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/build:go_default_library",
+        "//cue/encoding:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/format:go_default_library",
+        "//cue/parser:go_default_library",
+        "//cue/token:go_default_library",
+        "//internal:go_default_library",
+        "//internal/str:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = [
+        "import_test.go",
+        "loader_test.go",
+        "match_test.go",
+        "read_test.go",
+        "search_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    embed = [":go_default_library"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/build:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/format:go_default_library",
+        "//cue/token:go_default_library",
+        "//internal/str:go_default_library",
+        "@com_github_kylelemons_godebug//diff:go_default_library",
+        "@org_golang_x_xerrors//:go_default_library",
+    ],
+)

@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "v1_proto",
+    srcs = ["attributes.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//gogoproto:gogoproto_proto",
+        "@com_google_protobuf//:duration_proto",
+        "@com_google_protobuf//:timestamp_proto",
+    ],
+)
+
+go_proto_library(
+    name = "v1_go_proto",
+    importpath = "istio.io/api/mixer/v1",
+    proto = ":v1_proto",
+    visibility = ["//visibility:public"],
+    deps = ["//gogoproto:go_default_library"],
+)
+
+go_library(
+    name = "go_default_library",
+    embed = [":v1_go_proto"],
+    importpath = "istio.io/api/mixer/v1",
+    visibility = ["//visibility:public"],
+)

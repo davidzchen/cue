@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "manual.go",
+        "regexp.go",
+    ],
+    importpath = "cuelang.org/go/pkg/regexp",
+    visibility = ["//visibility:public"],
+    deps = ["//cue/errors:go_default_library"],
+)

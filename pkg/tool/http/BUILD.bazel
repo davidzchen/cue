@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "doc.go",
+        "http.go",
+    ],
+    importpath = "cuelang.org/go/pkg/tool/http",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//internal/task:go_default_library",
+    ],
+)

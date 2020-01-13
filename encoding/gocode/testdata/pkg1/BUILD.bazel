@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "code.go",
+        "cue_gen.go",
+    ],
+    importpath = "cuelang.org/go/encoding/gocode/testdata/pkg1",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//encoding/gocode/gocodec:go_default_library",
+        "//encoding/gocode/testdata/pkg2:go_default_library",
+    ],
+)

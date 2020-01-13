@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["yaml.go"],
+    importpath = "cuelang.org/go/encoding/yaml",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//internal/third_party/yaml:go_default_library",
+        "//pkg/encoding/yaml:go_default_library",
+        "@com_github_ghodss_yaml//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["yaml_test.go"],
+    embed = [":go_default_library"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/format:go_default_library",
+    ],
+)

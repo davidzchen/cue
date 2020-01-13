@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "manual.go",
+        "strings.go",
+    ],
+    importpath = "cuelang.org/go/pkg/strings",
+    visibility = ["//visibility:public"],
+)

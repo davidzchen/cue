@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "apic.go",
+        "decode.go",
+        "parserc.go",
+        "readerc.go",
+        "resolve.go",
+        "scannerc.go",
+        "yaml.go",
+        "yamlh.go",
+        "yamlprivateh.go",
+    ],
+    importpath = "cuelang.org/go/internal/third_party/yaml",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//cue/ast:go_default_library",
+        "//cue/token:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["decode_test.go"],
+    data = glob(["testdata/**"]),
+    embed = [":go_default_library"],
+    deps = [
+        "//cue/ast:go_default_library",
+        "//cue/format:go_default_library",
+    ],
+)

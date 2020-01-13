@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "go_default_test",
+    srcs = ["tut_test.go"],
+    data = glob(["testdata/**"]),
+    deps = [
+        "//cue/load:go_default_library",
+        "//internal/copy:go_default_library",
+        "//internal/cuetest:go_default_library",
+        "@com_github_kylelemons_godebug//diff:go_default_library",
+    ],
+)

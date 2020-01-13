@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "cueproto_proto",
+    srcs = ["cue.proto"],
+    visibility = ["//visibility:public"],
+    deps = ["@com_google_protobuf//:descriptor_proto"],
+)
+
+go_proto_library(
+    name = "cueproto_go_proto",
+    importpath = "cuelang.org/cueproto",
+    proto = ":cueproto_proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "go_default_library",
+    embed = [":cueproto_go_proto"],
+    importpath = "cuelang.org/cueproto",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "go_default_test",
+    srcs = ["script_test.go"],
+    deps = [
+        "//cmd/cue/cmd:go_default_library",
+        "//cue/parser:go_default_library",
+        "@com_github_rogpeppe_testscript//:go_default_library",
+        "@com_github_rogpeppe_testscript//txtar:go_default_library",
+    ],
+)
