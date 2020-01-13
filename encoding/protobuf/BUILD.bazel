@@ -39,5 +39,10 @@ go_test(
         "//cue/format:go_default_library",
         "@com_github_kr_pretty//:go_default_library",
     ],
-    data = glob(["testdata/**"]),
+    data = glob(
+        [
+            "examples/**",
+            "testdata/**",
+        ],
+    ),
 )
