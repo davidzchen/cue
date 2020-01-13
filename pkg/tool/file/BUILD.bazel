@@ -23,5 +23,6 @@ go_test(
         "//cue:go_default_library",
         "//cue/parser:go_default_library",
         "//internal:go_default_library",
+        "//internal/task:go_default_library",
     ],
 )

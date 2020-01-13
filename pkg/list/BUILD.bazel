@@ -5,6 +5,7 @@ go_library(
     srcs = [
         "list.go",
         "math.go",
+        "sort.go",
     ],
     importpath = "cuelang.org/go/pkg/list",
     visibility = ["//visibility:public"],

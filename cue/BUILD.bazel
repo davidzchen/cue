@@ -9,6 +9,7 @@ go_library(
         "build.go",
         "builtin.go",
         "builtins.go",
+        "builtinutil.go",
         "context.go",
         "copy.go",
         "debug.go",

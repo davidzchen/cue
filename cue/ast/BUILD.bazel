@@ -25,6 +25,7 @@ go_test(
     embed = [":go_default_library"],
     deps = [
         "//cue/format:go_default_library",
+        "//cue/parser:go_default_library",
         "//cue/token:go_default_library",
         "@com_github_stretchr_testify//assert:go_default_library",
         "@org_golang_x_xerrors//:go_default_library",
