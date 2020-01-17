@@ -22,6 +22,18 @@ go_library(
     ],
 )
 
+# TODO(dzc): performance_test still fails to read testdata files since
+# cwd for the test appears to be source root in the runfiles directory.
+# despite rundir being set to.
+go_test(
+    name = "performance_test",
+    srcs = ["performance_test.go"],
+    data = glob(["testdata/**"]),
+    rundir = "./cue/parser",
+    embed = [":go_default_library"],
+    tags = ["manual"],
+)
+
 go_test(
     name = "go_default_test",
     srcs = [
@@ -29,7 +41,6 @@ go_test(
         "example_test.go",
         "interface_test.go",
         "parser_test.go",
-        "performance_test.go",
         "short_test.go",
     ],
     data = glob(["testdata/**"]),
