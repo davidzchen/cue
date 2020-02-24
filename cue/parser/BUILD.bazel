@@ -29,8 +29,8 @@ go_test(
     name = "performance_test",
     srcs = ["performance_test.go"],
     data = glob(["testdata/**"]),
-    rundir = "./cue/parser",
     embed = [":go_default_library"],
+    rundir = "./cue/parser",
     tags = ["manual"],
 )
 
@@ -41,6 +41,7 @@ go_test(
         "example_test.go",
         "interface_test.go",
         "parser_test.go",
+        "performance_test.go",
         "short_test.go",
     ],
     data = glob(["testdata/**"]),

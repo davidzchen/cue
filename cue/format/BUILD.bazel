@@ -14,6 +14,7 @@ go_library(
     deps = [
         "//cue/ast:go_default_library",
         "//cue/ast/astutil:go_default_library",
+        "//cue/errors:go_default_library",
         "//cue/literal:go_default_library",
         "//cue/parser:go_default_library",
         "//cue/scanner:go_default_library",

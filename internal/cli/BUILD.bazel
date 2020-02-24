@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["cli.go"],
+    importpath = "cuelang.org/go/internal/cli",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/parser:go_default_library",
+        "//cue/token:go_default_library",
+    ],
+)

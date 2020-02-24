@@ -32,6 +32,12 @@ go_test(
         "examples_test.go",
         "protobuf_test.go",
     ],
+    data = glob(
+        [
+            "examples/**",
+            "testdata/**",
+        ],
+    ),
     embed = [":go_default_library"],
     deps = [
         "//cue/ast:go_default_library",
@@ -39,10 +45,4 @@ go_test(
         "//cue/format:go_default_library",
         "@com_github_kr_pretty//:go_default_library",
     ],
-    data = glob(
-        [
-            "examples/**",
-            "testdata/**",
-        ],
-    ),
 )

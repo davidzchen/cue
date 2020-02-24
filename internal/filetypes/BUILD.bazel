@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "filetypes.go",
+        "types.go",
+    ],
+    importpath = "cuelang.org/go/internal/filetypes",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/build:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/token:go_default_library",
+        "//encoding/gocode/gocodec:go_default_library",
+    ],
+)
+
+go_test(
+    name = "go_default_test",
+    srcs = ["filetypes_test.go"],
+    embed = [":go_default_library"],
+    deps = [
+        "//cue/build:go_default_library",
+        "@com_github_google_go_cmp//cmp:go_default_library",
+        "@com_github_google_go_cmp//cmp/cmpopts:go_default_library",
+    ],
+)
