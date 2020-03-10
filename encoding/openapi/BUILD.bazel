@@ -15,9 +15,13 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "//cue:go_default_library",
+        "//cue/ast:go_default_library",
         "//cue/errors:go_default_library",
         "//cue/format:go_default_library",
+        "//cue/literal:go_default_library",
         "//cue/token:go_default_library",
+        "//encoding/json:go_default_library",
+        "//internal/encoding/json:go_default_library",
         "@com_github_cockroachdb_apd_v2//:go_default_library",
     ],
 )
@@ -29,6 +33,7 @@ go_test(
     embed = [":go_default_library"],
     deps = [
         "//cue:go_default_library",
+        "//cue/ast:go_default_library",
         "//cue/errors:go_default_library",
         "//cue/load:go_default_library",
         "@com_github_kylelemons_godebug//diff:go_default_library",

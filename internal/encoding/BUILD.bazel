@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = [
+        "encoder.go",
+        "encoding.go",
+    ],
+    importpath = "cuelang.org/go/internal/encoding",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//cue:go_default_library",
+        "//cue/ast:go_default_library",
+        "//cue/build:go_default_library",
+        "//cue/errors:go_default_library",
+        "//cue/format:go_default_library",
+        "//cue/parser:go_default_library",
+        "//cue/token:go_default_library",
+        "//encoding/json:go_default_library",
+        "//encoding/protobuf:go_default_library",
+        "//internal/filetypes:go_default_library",
+        "//internal/third_party/yaml:go_default_library",
+        "//pkg/encoding/yaml:go_default_library",
+    ],
+)

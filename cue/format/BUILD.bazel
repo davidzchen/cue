@@ -19,6 +19,7 @@ go_library(
         "//cue/parser:go_default_library",
         "//cue/scanner:go_default_library",
         "//cue/token:go_default_library",
+        "//internal:go_default_library",
     ],
 )
 

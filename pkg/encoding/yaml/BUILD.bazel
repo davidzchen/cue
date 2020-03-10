@@ -9,7 +9,7 @@ go_library(
         "//cue:go_default_library",
         "//cue/ast:go_default_library",
         "//internal:go_default_library",
+        "//internal/encoding/yaml:go_default_library",
         "//internal/third_party/yaml:go_default_library",
-        "@com_github_ghodss_yaml//:go_default_library",
     ],
 )
